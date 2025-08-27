@@ -3,364 +3,464 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pet Memory - Support</title>
+    <title>Support - Pet Memory</title>
+    <link rel="stylesheet" href="style.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* Page-specific styles for Support Page */
         
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #FFF5F0 0%, #FFF0F5 100%);
-            min-height: 100vh;
+        .content.support {
+            max-width: 1200px;
         }
-        
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+
+        /* Quick Help Cards */
+        .quick-help {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
         }
-        
-        header {
+
+        .help-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px var(--shadow-light);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-align: center;
-            padding: 40px 0;
+        }
+
+        .help-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px var(--shadow-medium);
+        }
+
+        .help-card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .help-card h3 {
+            color: var(--text-primary);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .help-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* FAQ Section */
+        .faq-section {
             background: white;
             border-radius: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px var(--shadow-light);
         }
-        
-        .logo {
-            width: 80პს;
-            height: 80px;
-            background: linear-gradient(135deg, #E68073 0%, #CC6680 100%);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 40px;
+
+        .faq-section h2 {
+            color: var(--text-primary);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
         }
-        
-        h1 {
-            color: #4D3319;
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
-        
-        .subtitle {
-            color: #8B624D;
-            font-size: 16px;
-        }
-        
-        .section {
-            background: white;
-            border-radius: 16px;
-            padding: 30px;
-            margin-bottom: 20px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-        }
-        
-        h2 {
-            color: #E68073;
-            margin-bottom: 20px;
-            font-size: 24px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .icon {
-            font-size: 24px;
-        }
-        
+
         .faq-item {
-            margin-bottom: 25px;
-            padding-bottom: 25px;
-            border-bottom: 1px solid #f0f0f0;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--background-accent);
+            padding-bottom: 1.5rem;
         }
-        
+
         .faq-item:last-child {
             border-bottom: none;
-            padding-bottom: 0;
         }
-        
-        .question {
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: var(--primary-coral);
+        }
+
+        .faq-question h3 {
+            color: var(--text-primary);
+            font-size: 1.2rem;
             font-weight: 600;
-            color: #4D3319;
-            margin-bottom: 10px;
-            font-size: 18px;
         }
-        
-        .answer {
-            color: #666;
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            color: var(--primary-coral);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            margin-top: 1rem;
+            color: var(--text-secondary);
             line-height: 1.8;
+            display: none;
         }
-        
-        .contact-box {
-            background: linear-gradient(135deg, #E68073 0%, #CC6680 100%);
-            color: white;
-            padding: 25px;
-            border-radius: 12px;
-            text-align: center;
+
+        .faq-answer ol,
+        .faq-answer ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
         }
-        
-        .contact-box a {
-            color: white;
-            font-weight: 600;
+
+        .faq-item.active .faq-answer {
+            display: block;
         }
-        
-        .feature-grid {
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        /* Extended Contact Section */
+        .contact-section.extended {
+            padding: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-section.extended h2 {
+            font-size: 2.5rem;
+        }
+
+        .contact-section.extended p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .contact-methods {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
-        
-        .feature {
-            padding: 20px;
-            background: #FFF5F0;
-            border-radius: 12px;
-            text-align: center;
+
+        .contact-method {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: background 0.3s ease;
         }
-        
-        .feature-icon {
-            font-size: 32px;
-            margin-bottom: 10px;
+
+        .contact-method:hover {
+            background: rgba(255, 255, 255, 0.25);
         }
-        
-        .feature-title {
-            font-weight: 600;
-            color: #4D3319;
-            margin-bottom: 8px;
+
+        .contact-method-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
         }
-        
-        .feature-desc {
-            color: #8B624D;
-            font-size: 14px;
-        }
-        
-        ul {
-            margin-left: 20px;
-            color: #666;
-        }
-        
-        li {
-            margin-bottom: 10px;
-        }
-        
-        .button {
-            display: inline-block;
-            background: linear-gradient(135deg, #E68073 0%, #CC6680 100%);
+
+        .contact-method h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
             color: white;
-            padding: 12px 30px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 15px;
-            transition: transform 0.2s;
         }
-        
-        .button:hover {
-            transform: translateY(-2px);
+
+        .contact-method p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: white;
+            opacity: 0.95;
         }
-        
-        footer {
+
+        /* Troubleshooting Guide */
+        .troubleshooting {
+            background: var(--background-accent);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .troubleshooting h2 {
+            color: var(--text-primary);
+            font-size: 2rem;
+            margin-bottom: 2rem;
             text-align: center;
-            padding: 30px 0;
-            color: #8B624D;
-            font-size: 14px;
         }
-        
-        @media (max-width: 600px) {
-            .container {
-                padding: 10px;
+
+        .troubleshooting-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .troubleshoot-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px var(--shadow-light);
+        }
+
+        .troubleshoot-item h4 {
+            color: var(--primary-coral);
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .troubleshoot-item p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Support page specific paw positions */
+        .paw-1 { top: 15%; right: 10%; }
+        .paw-2 { top: 45%; left: 5%; }
+        .paw-3 { bottom: 25%; right: 8%; }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .quick-help {
+                grid-template-columns: 1fr;
             }
-            
-            h1 {
-                font-size: 28px;
+
+            .contact-methods {
+                grid-template-columns: 1fr;
             }
-            
-            .section {
-                padding: 20px;
+
+            .troubleshooting-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="logo">🐾</div>
-            <h1>Pet Memory Support</h1>
-            <p class="subtitle">Cherish Every Moment with Your Furry Friends</p>
-        </header>
+    <!-- Decorative Elements -->
+    <div class="paw-decoration fixed paw-1">🐾</div>
+    <div class="paw-decoration fixed paw-2">🐾</div>
+    <div class="paw-decoration fixed paw-3">🐾</div>
 
-        <!-- Getting Started -->
-        <div class="section">
-            <h2><span class="icon">🚀</span> Getting Started</h2>
-            <div class="faq-item">
-                <div class="question">How do I create my first pet profile?</div>
-                <div class="answer">
-                    After signing in with your Apple ID, tap the "+" button on the main screen. Enter your pet's name, species, date of birth, and add a photo. You can also include details like breed, personality, and hobbies to make the profile complete!
-                </div>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🐾</span>
+                <span class="logo-text">Pet Memory - Forever</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="support.html" class="active">Support</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="content wide support">
+        <div class="page-header">
+            <h1>How Can We Help?</h1>
+            <p class="subtitle">Get support for Pet Memory app</p>
+        </div>
+
+        <!-- Quick Help Cards -->
+        <div class="quick-help">
+            <div class="help-card">
+                <div class="help-card-icon">🚀</div>
+                <h3>Getting Started</h3>
+                <p>New to Pet Memory? Learn how to create your first pet profile and start uploading memories.</p>
             </div>
-            <div class="faq-item">
-                <div class="question">How do I add photos and videos?</div>
-                <div class="answer">
-                    Open your pet's gallery, tap "Add Photos & Videos", and select up to 100 items from your photo library. Pet Memory preserves your original photo formats (HEIC, JPEG, PNG) and supports videos too. Live Photos are also supported!
-                </div>
+            <div class="help-card">
+                <div class="help-card-icon">💾</div>
+                <h3>Storage & Subscriptions</h3>
+                <p>Understand storage limits and how to upgrade your plan for more space.</p>
+            </div>
+            <div class="help-card">
+                <div class="help-card-icon">🔧</div>
+                <h3>Troubleshooting</h3>
+                <p>Quick fixes for common issues and performance tips.</p>
             </div>
         </div>
 
-        <!-- Features -->
-        <div class="section">
-            <h2><span class="icon">✨</span> Features</h2>
-            <div class="feature-grid">
-                <div class="feature">
-                    <div class="feature-icon">📸</div>
-                    <div class="feature-title">Original Quality</div>
-                    <div class="feature-desc">All photos & videos stored in original format</div>
+        <!-- FAQ Section -->
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>How do I create a pet profile?</h3>
+                    <span class="faq-toggle">+</span>
                 </div>
-                <div class="feature">
-                    <div class="feature-icon">☁️</div>
-                    <div class="feature-title">Cloud Storage</div>
-                    <div class="feature-desc">Secure backup with tiered storage options</div>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">🎬</div>
-                    <div class="feature-title">Live Photos</div>
-                    <div class="feature-desc">Full support for Live Photos</div>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">🐕</div>
-                    <div class="feature-title">Multiple Pets</div>
-                    <div class="feature-desc">Create profiles for all your pets</div>
+                <div class="faq-answer">
+                    <p>To create a pet profile:</p>
+                    <ol>
+                        <li>Open the Pet Memory app</li>
+                        <li>Tap the + button on the main screen</li>
+                        <li>Enter your pet's name, species, and birthday</li>
+                        <li>Add a photo (optional)</li>
+                        <li>Tap Save to create the profile</li>
+                    </ol>
+                    <p style="margin-top: 0.5rem;">You can create unlimited pet profiles with any subscription tier!</p>
                 </div>
             </div>
-        </div>
 
-        <!-- Subscription Plans -->
-        <div class="section">
-            <h2><span class="icon">👑</span> Subscription Plans</h2>
             <div class="faq-item">
-                <div class="question">Free Plan</div>
-                <div class="answer">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>What are the storage limits for each plan?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Pet Memory offers three storage tiers:</p>
                     <ul>
-                        <li>20 GB storage</li>
-                        <li>Up to 3 pet profiles</li>
-                        <li>5-minute video limit</li>
-                        <li>Original photo quality</li>
+                        <li><strong>Free:</strong> 20 GB of storage</li>
+                        <li><strong>Plus:</strong> 200 GB of storage</li>
+                        <li><strong>Premium:</strong> 1 TB (1000 GB) of storage</li>
                     </ul>
+                    <p style="margin-top: 0.5rem;">All tiers include unlimited pets, original quality photos and videos, and full app features. The only difference is the amount of storage space available.</p>
                 </div>
             </div>
+
             <div class="faq-item">
-                <div class="question">Plus Plan ($4.99/month or $49.99/year)</div>
-                <div class="answer">
-                    <ul>
-                        <li>200 GB storage</li>
-                        <li>Up to 10 pet profiles</li>
-                        <li>15-minute video limit</li>
-                        <li>Priority support</li>
-                    </ul>
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>How do I upgrade my subscription?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>To upgrade your subscription:</p>
+                    <ol>
+                        <li>Go to Settings in the app</li>
+                        <li>Tap on "Subscription"</li>
+                        <li>Choose your desired plan (Plus or Premium)</li>
+                        <li>Confirm the purchase through Apple's payment system</li>
+                    </ol>
+                    <p style="margin-top: 0.5rem;">Your upgrade takes effect immediately, and you'll have access to the increased storage right away.</p>
                 </div>
             </div>
+
             <div class="faq-item">
-                <div class="question">Premium Plan ($9.99/month or $99.99/year)</div>
-                <div class="answer">
-                    <ul>
-                        <li>1 TB storage</li>
-                        <li>Unlimited pet profiles</li>
-                        <li>Unlimited video length</li>
-                        <li>Priority support</li>
-                    </ul>
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>Can I share photos with family and friends?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! You can easily share individual photos or videos:</p>
+                    <ol>
+                        <li>Open the photo or video you want to share</li>
+                        <li>Tap the share button (three dots menu)</li>
+                        <li>Choose "Share" or "Save to Photos"</li>
+                        <li>Select how you want to share (Messages, Email, Social Media, etc.)</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>Are my photos and videos compressed?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>No! Pet Memory stores all your photos and videos in their original quality. We never compress or reduce the quality of your memories. Your files are uploaded and stored exactly as they were captured, preserving every detail.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>How do I delete photos or videos?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>There are two ways to delete media:</p>
+                    <p style="margin-top: 0.5rem;"><strong>Single item:</strong></p>
+                    <ol>
+                        <li>Open the photo/video</li>
+                        <li>Tap the three dots menu</li>
+                        <li>Select "Delete"</li>
+                        <li>Confirm deletion</li>
+                    </ol>
+                    <p style="margin-top: 0.5rem;"><strong>Multiple items:</strong></p>
+                    <ol>
+                        <li>In the gallery view, tap "Select"</li>
+                        <li>Choose the items you want to delete</li>
+                        <li>Tap the trash icon</li>
+                        <li>Confirm deletion</li>
+                    </ol>
                 </div>
             </div>
         </div>
 
-        <!-- FAQ -->
-        <div class="section">
-            <h2><span class="icon">❓</span> Frequently Asked Questions</h2>
-            <div class="faq-item">
-                <div class="question">How do I manage my subscription?</div>
-                <div class="answer">
-                    Go to Settings > Subscription in the app, or manage directly through your iPhone Settings > Apple ID > Subscriptions. You can upgrade, downgrade, or cancel anytime.
+        <!-- Troubleshooting Guide -->
+        <div class="troubleshooting">
+            <h2>Quick Troubleshooting</h2>
+            <div class="troubleshooting-grid">
+                <div class="troubleshoot-item">
+                    <h4>📱 App won't open</h4>
+                    <p>Try force-closing the app and reopening it. If the issue persists, restart your device or check for app updates in the App Store.</p>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="question">Is my data secure?</div>
-                <div class="answer">
-                    Yes! We use industry-standard encryption for all data transfers and storage. Your photos are stored securely in the cloud with redundant backups. Only you have access to your pet's memories.
+                <div class="troubleshoot-item">
+                    <h4>📸 Photos won't upload</h4>
+                    <p>Check your internet connection and available storage. Make sure you haven't reached your plan's storage limit.</p>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="question">Can I share photos with family?</div>
-                <div class="answer">
-                    You can export photos and videos to your device's photo library and share them through any app. Direct sharing features are coming soon!
+                <div class="troubleshoot-item">
+                    <h4>🔄 Sync issues</h4>
+                    <p>Pull down to refresh in the gallery view. Ensure you have a stable internet connection for syncing.</p>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="question">What happens if I cancel my subscription?</div>
-                <div class="answer">
-                    You'll keep access until the end of your billing period. Your data remains safe, but you won't be able to upload new content if you exceed the free tier limits. You can resubscribe anytime to regain full access.
+                <div class="troubleshoot-item">
+                    <h4>💳 Subscription problems</h4>
+                    <p>Go to Settings > Subscription and tap "Restore Purchases" if your subscription isn't recognized.</p>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="question">Why aren't my Live Photos playing?</div>
-                <div class="answer">
-                    Live Photos require both the image and video components to be uploaded. Tap and hold on the photo to play it. If it's not working, try re-uploading the Live Photo.
+                <div class="troubleshoot-item">
+                    <h4>🎥 Videos won't play</h4>
+                    <p>Ensure you have a strong internet connection. Videos stream from the cloud and require stable connectivity.</p>
+                </div>
+                <div class="troubleshoot-item">
+                    <h4>🔐 Login issues</h4>
+                    <p>Make sure you're using the correct Apple ID. Try signing out and back in through the Settings menu.</p>
                 </div>
             </div>
         </div>
 
-        <!-- Troubleshooting -->
-        <div class="section">
-            <h2><span class="icon">🔧</span> Troubleshooting</h2>
-            <div class="faq-item">
-                <div class="question">Photos won't upload</div>
-                <div class="answer">
-                    Check your internet connection and available storage. If you're at your storage limit, consider upgrading your plan or removing some old photos. Also ensure you've granted photo library permissions in Settings.
+        <!-- Contact Section -->
+        <div class="contact-section extended">
+            <h2>Still Need Help?</h2>
+            <p>Our support team is here for you</p>
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <div class="contact-method-icon">✉️</div>
+                    <h3>Email Support</h3>
+                    <p>Get help via email</p>
+                    <a href="mailto:galaxysoftware2025@gmail.com">Send Email</a>
+                </div>
+                <div class="contact-method">
+                    <div class="contact-method-icon">📖</div>
+                    <h3>Privacy Policy</h3>
+                    <p>Learn about data handling</p>
+                    <a href="privacy.html">View Policy</a>
+                </div>
+                <div class="contact-method">
+                    <div class="contact-method-icon">⭐</div>
+                    <h3>Rate Us</h3>
+                    <p>Share your experience</p>
+                    <a href="https://apps.apple.com/app/petmemory">App Store</a>
                 </div>
             </div>
-            <div class="faq-item">
-                <div class="question">App crashes or freezes</div>
-                <div class="answer">
-                    Try force-closing the app and reopening it. If issues persist, check for app updates in the App Store, or try deleting and reinstalling the app (your data is safely stored in the cloud).
-                </div>
-            </div>
         </div>
-
-        <!-- Contact -->
-        <div class="section">
-            <h2><span class="icon">📧</span> Contact Us</h2>
-            <div class="contact-box">
-                <p style="font-size: 18px; margin-bottom: 10px;">Need more help?</p>
-                <p>We're here for you and your pets!</p>
-                <p style="margin-top: 15px;">
-                    Email us at: <a href="mailto:galaxysoftware2025@gmail.com">galaxysoftware2025@gmail.com</a>
-                </p>
-                <p style="margin-top: 10px; font-size: 14px;">
-                    We typically respond within 24-48 hours
-                </p>
-            </div>
-        </div>
-
-        <!-- Privacy -->
-        <div class="section">
-            <h2><span class="icon">🔒</span> Privacy & Security</h2>
-            <p style="color: #666; line-height: 1.8;">
-                Pet Memory takes your privacy seriously. We never share your personal information or pet photos with third parties. All data is encrypted in transit and at rest. You maintain full ownership of all content you upload.
-            </p>
-            <a href="#" class="button">View Privacy Policy</a>
-        </div>
-
-        <footer>
-            <p>© 2025 Galaxy Software. All rights reserved.</p>
-            <p style="margin-top: 10px;">Made with ❤️ for pet lovers everywhere</p>
-        </footer>
     </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="support.html">Support</a>
+            <a href="mailto:galaxysoftware2025@gmail.com">Contact</a>
+        </div>
+        <p class="copyright">© 2025 Galaxy Software. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            faqItem.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>

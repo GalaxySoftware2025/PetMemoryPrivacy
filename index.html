@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Memory - Cherish Every Moment</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Page-specific styles for Home Page */
+        
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            text-align: left;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            color: var(--text-primary);
+        }
+
+        .hero .tagline {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .app-mockup {
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .app-mockup img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.15));
+            border-radius: 30px;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--background-light);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px var(--shadow-medium);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Storage Plans */
+        .storage-plans {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #FAF5FB 0%, #FFF8F5 100%);
+        }
+
+        .plans-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .plan-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px var(--shadow-light);
+        }
+
+        .plan-card.featured {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(230, 128, 115, 0.2);
+            border: 2px solid var(--primary-coral);
+        }
+
+        .plan-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .plan-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-storage {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-coral);
+            margin: 1rem 0;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .plan-features li {
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+        }
+
+        /* Page-specific paw decorations */
+        .paw-1 {
+            top: 10%;
+            left: 5%;
+            font-size: 2rem;
+            animation-delay: 0s;
+        }
+
+        .paw-2 {
+            top: 60%;
+            right: 10%;
+            font-size: 2.5rem;
+            animation-delay: 2s;
+        }
+
+        .paw-3 {
+            bottom: 20%;
+            left: 15%;
+            font-size: 1.8rem;
+            animation-delay: 4s;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content {
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+                flex-direction: column;
+            }
+
+            .features-grid,
+            .plans-container {
+                grid-template-columns: 1fr;
+            }
+
+            .plan-card.featured {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🐾</span>
+                <span class="logo-text">Pet Memory - Forever</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="support.html">Support</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="paw-decoration paw-1">🐾</div>
+        <div class="paw-decoration paw-2">🐾</div>
+        <div class="paw-decoration paw-3">🐾</div>
+        
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Cherish Every Moment with Your Pets</h1>
+                <p class="tagline">Your pet's digital memory book</p>
+                <p class="hero-description">
+                    Create beautiful galleries for each of your beloved pets. Store photos and videos in original quality, 
+                    organized by pet and date. Keep all your precious memories safe in the cloud.
+                </p>
+                <div class="cta-buttons">
+                    <a href="https://apps.apple.com/app/petmemory" class="btn btn-primary">
+                        <span>📱</span> Download Now
+                    </a>
+                    <a href="#features" class="btn btn-secondary">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+            <div class="app-mockup">
+                <div style="background: linear-gradient(135deg, #FFF8F5 0%, #FAF5FB 100%); padding: 2rem; border-radius: 30px;">
+                    <div style="background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                        <div style="text-align: center; margin-bottom: 2rem;">
+                            <span style="font-size: 4rem;">🐕</span>
+                            <h3 style="margin-top: 1rem;">Max</h3>
+                            <p style="color: var(--text-secondary);">2 years old</p>
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem;">
+                            <div style="background: var(--background-accent); padding-bottom: 100%; border-radius: 10px;"></div>
+                            <div style="background: var(--background-accent); padding-bottom: 100%; border-radius: 10px;"></div>
+                            <div style="background: var(--background-accent); padding-bottom: 100%; border-radius: 10px;"></div>
+                            <div style="background: var(--background-accent); padding-bottom: 100%; border-radius: 10px;"></div>
+                            <div style="background: var(--background-accent); padding-bottom: 100%; border-radius: 10px;"></div>
+                            <div style="background: var(--background-accent); padding-bottom: 100%; border-radius: 10px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <h2 class="section-title">Everything You Need</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📸</div>
+                <h3>Original Quality</h3>
+                <p>Store your photos and videos in their original quality. No compression, no quality loss.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">☁️</div>
+                <h3>Cloud Storage</h3>
+                <p>All your memories safely backed up in the cloud. Access them anytime, anywhere.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🐾</div>
+                <h3>Pet Profiles</h3>
+                <p>Create individual profiles for each pet with their photos, birthday, and personality traits.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📅</div>
+                <h3>Smart Organization</h3>
+                <p>Photos automatically organized by date. Find any memory instantly.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎥</div>
+                <h3>Video Support</h3>
+                <p>Upload and play videos of your pets' most adorable moments.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💝</div>
+                <h3>Share Memories</h3>
+                <p>Easily share your favorite pet photos and videos with friends and family.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Storage Plans Section -->
+    <section class="storage-plans">
+        <h2 class="section-title">Choose Your Storage Plan</h2>
+        <div class="plans-container">
+            <div class="plan-card">
+                <div class="plan-icon">✨</div>
+                <div class="plan-name">Free</div>
+                <div class="plan-storage">20 GB</div>
+                <ul class="plan-features">
+                    <li>✓ Original quality photos</li>
+                    <li>✓ Video uploads</li>
+                    <li>✓ Unlimited pets</li>
+                    <li>✓ Basic features</li>
+                </ul>
+            </div>
+            <div class="plan-card featured">
+                <div class="plan-icon">⭐</div>
+                <div class="plan-name">Plus</div>
+                <div class="plan-storage">200 GB</div>
+                <ul class="plan-features">
+                    <li>✓ Everything in Free</li>
+                    <li>✓ 10x more storage</li>
+                    <li>✓ Priority support</li>
+                    <li>✓ Advanced features</li>
+                </ul>
+            </div>
+            <div class="plan-card">
+                <div class="plan-icon">👑</div>
+                <div class="plan-name">Premium</div>
+                <div class="plan-storage">1 TB</div>
+                <ul class="plan-features">
+                    <li>✓ Everything in Plus</li>
+                    <li>✓ Massive storage</li>
+                    <li>✓ Priority support</li>
+                    <li>✓ All premium features</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="support.html">Support</a>
+            <a href="mailto:galaxysoftware2025@gmail.com">Contact</a>
+        </div>
+        <p class="copyright">© 2025 Galaxy Software. All rights reserved.</p>
+    </footer>
+</body>
+</html>
